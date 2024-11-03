@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Image from './components/Image'
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence} from 'framer-motion'
 import {data} from './data'
 
 const App = () => {
-  const [image , setImage] = useState({src : '/Pictures/amazon.webp', info : 'Amazon'})
+  const [image , setImage] = useState({src : data[0].src, info : data[0].info, heading : data[0].heading})
   const imageCounter = useRef(0);
 
   const changeImage = (direction) => {
@@ -14,20 +14,20 @@ const App = () => {
       if(imageCounter.current >= data.length){
         imageCounter.current = 0;
       }
-      setImage({...image, src : `${data[imageCounter.current].src}` , info : data[imageCounter.current].info})
+      setImage({...image, src : `${data[imageCounter.current].src}` , info : data[imageCounter.current].info , heading : data[imageCounter.current].heading})
     }
     else if(direction === 'previous'){
       --imageCounter.current;
       if(imageCounter.current <= -1){
         imageCounter.current = data.length-1;
       }
-      setImage({...image, src : `${data[imageCounter.current].src}` , info : data[imageCounter.current].info})
+      setImage({...image, src : `${data[imageCounter.current].src}` , info : data[imageCounter.current].info, heading : data[imageCounter.current].heading})
     }
   }
 
   return (
-    <div className={`w-screen h-screen relative`}>
-      <motion.div className='absolute top-1/2 left-14 -translate-x-1/2 -translate-y-1/2'>
+    <div className={`w-screen h-screen relative overflow-hidden`}>
+      <motion.div className='absolute top-1/2 left-14 -translate-x-1/2 -translate-y-1/2 z-30'>
         <button onClick={() => changeImage('previous')} className='w-10 h-10 rounded-full'>
         <motion.svg
             whileHover={{scale : 1.3 }}
@@ -54,14 +54,8 @@ const App = () => {
         </motion.svg>
         </button>
       </motion.div>
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-full h-full blur-sm'>
-        <motion.img 
-        initial={{scale : 0}}
-        animate={{scale : 1}}
-        // initial={{scale : 0}}
-        src={image.src} className='object-fill' alt="" />
-      </div>
-      <motion.div className='absolute top-1/2 right-5 -translate-x-1/2 -translate-y-1/2'>
+
+      <motion.div className='absolute top-1/2 right-5 -translate-x-1/2 -translate-y-1/2 z-30'>
         <button onClick={() => changeImage('next')} className='w-10 h-10 rounded-full'>
           <motion.svg
               whileHover={{scale : 1.3 }}
@@ -89,7 +83,17 @@ const App = () => {
         </button>
       </motion.div>
 
-      <Image src={image.src} info={image.info}/>
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 w-full h-full blur-sm'>
+        <AnimatePresence>
+        <motion.img 
+        initial={{scale : 0}}
+        animate={{scale : 1.1}}
+        exit={{scale : 0}}
+        transition={{duration : 0.4, ease : 'circInOut'}}
+        src={image.src} className='w-full h-full object-fill' alt="" />
+        </AnimatePresence>
+      </div>
+      <Image src={image.src} info={image.info} heading={image.heading}/>
     </div>
   )
 }

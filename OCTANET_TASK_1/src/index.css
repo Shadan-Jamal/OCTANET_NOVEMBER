@@ -13,3 +13,24 @@
 .st2{
     fill:#0a0a0a;
 }
+
+@font-face {
+    font-family: 'HeyWoWBold';
+    src: url('./fonts/HeyWowBold.ttf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HeyWoWLight';
+    src: url('./fonts/HeyWowLight.ttf');
+    font-style: normal;
+}
+
+.btn-font{
+    font-family: HeyWoWBold;
+    font-style: normal;
+}
+
+.info-font{
+    font-family: HeyWoWLight;
+    font-style: normal;
+}
