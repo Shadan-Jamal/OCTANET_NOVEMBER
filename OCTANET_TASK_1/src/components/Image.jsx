@@ -4,30 +4,29 @@ import { motion,AnimatePresence } from 'framer-motion'
 const Image = ({src , info, heading}) => {
   const [click,setClick] = useState(false);
 
-  console.log(src,info)
   return (
-    <div className={`w-full h-full relative overflow-hidden`}>
+    <div className={`w-full h-screen relative overflow-hidden`}>
         <AnimatePresence>
           {/* Image */}
           <motion.img
-          key={src} 
+          key={heading} 
           initial={{opacity : 0}}
           animate={{opacity : 1}}
           exit={{opacity : 0}}
           transition={{duration : 0.4 , ease: 'circInOut'}}
-          src={src} alt="" className='w-[100vw] h-[100vh] object-contain'/>
+          src={src} alt="" className='w-[100vw] h-[83vh] object-contain absolute bottom-1'/>
 
           {/* Information */}
           {click && <motion.div
-          className='h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-end'>
+          className='w-[65%] absolute -bottom-4 left-1/2 -translate-x-1/2 flex justify-end items-end'>
             <motion.div 
             initial={{scale : 0}}
-            animate={{scale : 1}}
+            animate={{scale : 0.8}}
             exit={{scale : 0, transition : {duration : 0.2}}}
             transition={{duration: 0.4 ,type : 'spring', ease : 'circInOut'}}
-            className='px-4 py-10 bg-black/60 text-white rounded-3xl'>
-              <h1 className='btn-font text-5xl mb-5 border-b-[3px] border-white w-fit pb-3'>{heading}</h1>
-              <p className='text-lg text-yellow-200 info-font text-wrap leading-6'>{info}</p>
+            className='px-8 py-8 bg-black/80 text-white rounded-3xl border-[1px]'>
+              <motion.h1 initial={{opacity : 0}} animate={{opacity : 1}} transition={{delay : 0.3}} className='btn-font text-5xl mb-5 border-b-[3px] border-white w-fit pb-3'>{heading}</motion.h1>
+              <motion.p initial={{opacity : 0}} animate={{opacity : 1}} transition={{delay : 0.3}} lassName='text-lg text-slate-100 info-font text-wrap leading-6'>{info}</motion.p>
             </motion.div>
           </motion.div>}
         </AnimatePresence>
