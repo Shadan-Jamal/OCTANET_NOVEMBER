@@ -24,10 +24,10 @@ const Image = ({src , info, heading}) => {
             initial={{x : '-80vw'}}
             animate={{x : 0}}
             exit={{x : '80vw'}}
-            transition={{type : 'spring'}}
-            className='px-4 py-10 bg-black/60 text-white'>
-              <h1 className='btn-font text-5xl mb-5'>{heading}</h1>
-              <p className='text-lg text-yellow-200 info-font'>{info}</p>
+            transition={{duration: 0.7 ,type : 'spring' , ease : 'circInOut'}}
+            className='px-4 py-10 bg-black/60 text-white rounded-3xl'>
+              <h1 className='btn-font text-5xl mb-5 border-b-[3px] border-white w-fit pb-3'>{heading}</h1>
+              <p className='text-lg text-yellow-200 info-font text-wrap leading-6'>{info}</p>
             </motion.div>
           </motion.div>}
         </AnimatePresence>
@@ -36,7 +36,7 @@ const Image = ({src , info, heading}) => {
         whileHover={{scale : 1.2 , backgroundColor : 'white'}}
         transition={{duration: 0.4, ease : 'backInOut'}}
         className='absolute bottom-10 right-12 z-30 rounded-full'>
-          <button onClick={() => setClick(!click)} className='px-5 py-2 w-full h-full text-lg btn-font text-black rounded-full border-2 border-white'>About</button>
+          <button onClick={() => setClick(!click)} className='px-5 py-2 w-full h-full text-lg btn-font text-black rounded-full border-2 border-white'>{click ? 'X' : 'About'}</button>
         </motion.div>
     </div>
   )
