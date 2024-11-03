@@ -21,10 +21,10 @@ const Image = ({src , info, heading}) => {
           {click && <motion.div
           className='h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-end'>
             <motion.div 
-            initial={{x : '-80vw'}}
-            animate={{x : 0}}
-            exit={{x : '80vw'}}
-            transition={{duration: 0.7 ,type : 'spring' , ease : 'circInOut'}}
+            initial={{scale : 0}}
+            animate={{scale : 1}}
+            exit={{scale : 0, transition : {duration : 0.2}}}
+            transition={{duration: 0.4 ,type : 'spring', ease : 'circInOut'}}
             className='px-4 py-10 bg-black/60 text-white rounded-3xl'>
               <h1 className='btn-font text-5xl mb-5 border-b-[3px] border-white w-fit pb-3'>{heading}</h1>
               <p className='text-lg text-yellow-200 info-font text-wrap leading-6'>{info}</p>
