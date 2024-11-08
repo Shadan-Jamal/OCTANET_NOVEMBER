@@ -27,7 +27,7 @@ const ImageSection = () => {
     }
   return (
     <div className={`w-screen h-screen relative`}>
-        <Hero />
+      <Hero />
       <motion.div className='absolute top-1/2 left-14 -translate-x-1/2 -translate-y-1/2 z-30'>
         <button onClick={() => changeImage('previous')} className='w-10 h-10 rounded-full'>
         <motion.svg

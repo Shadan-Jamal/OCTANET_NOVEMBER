@@ -26,7 +26,7 @@ const Image = ({src , info, heading}) => {
             transition={{duration: 0.4 ,type : 'spring', ease : 'circInOut'}}
             className='px-8 py-8 bg-black/80 text-white rounded-3xl border-[1px]'>
               <motion.h1 initial={{opacity : 0}} animate={{opacity : 1}} transition={{delay : 0.3}} className='btn-font text-5xl mb-5 border-b-[3px] border-white w-fit pb-3'>{heading}</motion.h1>
-              <motion.p initial={{opacity : 0}} animate={{opacity : 1}} transition={{delay : 0.3}} lassName='text-lg text-slate-100 info-font text-wrap leading-6'>{info}</motion.p>
+              <motion.p initial={{opacity : 0}} animate={{opacity : 1}} transition={{delay : 0.3}} className='text-lg text-slate-100 info-font text-wrap leading-6'>{info}</motion.p>
             </motion.div>
           </motion.div>}
         </AnimatePresence>
